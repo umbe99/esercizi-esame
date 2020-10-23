@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Contatto } from './contatto';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -12,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class AppComponent implements OnInit {
   title = 'esercizi-esame-Front1';
-  //readonly urlHost="http://localost:8080";
+  readonly urlHost="http://localost:8080";
 
 
   aggiungiNome:string="";
@@ -33,11 +32,11 @@ export class AppComponent implements OnInit {
 
 
 
-  //aggiungi(nome:string,cognome:string,telefono:string){
+  aggiungi(nome:string,cognome:string,telefono:string){
 
- // }
-  //modifica(){}
-  //elimina(){}
-  //lista(){}
+  }
+  modifica(){}
+  elimina(){}
+  lista(){}
 
 }
