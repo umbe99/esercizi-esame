@@ -22,10 +22,10 @@ public interface RepContatti extends JpaRepository<Contatti, Long> {
     @Query("SELECT c FROM Contatti c ORDER BY Id")
     List<Contatti> trovaPerId();
     
-    List<Contatti> findByidLike();
+    //List<Contatti> findByidLike(id);
 
     @Query("SELECT c FROM Contatti c WHERE c.telefono = :telefono ORDER BY Id")
-    List<Contatti> trovaPerDescrizione(@Param("telefono") String telefono);
+    List<Contatti> trovaPerTelefono(@Param("telefono") String telefono);
     
 
 }

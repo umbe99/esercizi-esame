@@ -5,10 +5,33 @@
  */
 package gruppoesame.eserciziEsame.service;
 
+import gruppoesame.eserciziEsame.model.Contatti;
+import java.util.List;
+
 /**
  *
  * @author gianmarco
  */
 public interface Crud {
-   public String ciao();
+
+    /*CRUD
+    Create
+    Read
+    Update
+    Delete
+     */
+    //Create
+    public List<Contatti> creaContatto(Contatti contatto);
+
+    //Read
+    public List<Contatti> listaContatti();
+
+    //Update
+    public List<Contatti> modificaContatto(Contatti contatto);
+
+    //Delete
+    public List<Contatti> cancellaContatto(Contatti contatto);
+    
+    //Altri metodi
+    //public L
 }

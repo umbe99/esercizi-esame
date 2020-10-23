@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author gianmarco
  */
 @Entity
-public class Contatti {
+public class Contatti{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class Contatti {
     private String cognome;
     @Column
     private String telefono;
-  
+   
       /*  @OneToMany(mappedBy = "Contatti")
     @JsonIgnoreProperties(value = "contatti", allowSetters = true)
     private List<Telefono> telefono = new ArrayList<>();
