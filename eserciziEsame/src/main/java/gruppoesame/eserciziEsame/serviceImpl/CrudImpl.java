@@ -18,27 +18,30 @@ import org.springframework.stereotype.Service;
  * @author gianmarco
  */
 @Service
-public class CrudImpl implements Crud{
-@Autowired
-RepContatti repC;
+public class CrudImpl implements Crud {
+
+    @Autowired
+    RepContatti repC;
 
     @Override
     public List<Contatti> creaContatto(Contatti contatto) {
-        contatto=repC.save(contatto);
-       return listaContatti();
+        contatto = repC.save(contatto);
+        return listaContatti();
     }
 
     @Override
-    public List<Contatti> listaContatti() {
+    public List<Contatti>/* DtoContatto*/ listaContatti() {
         List<Contatti> listaC = new ArrayList<>();
-        listaC=repC.trovaPerId();
-        return  listaC;
+        listaC = repC.trovaPerId();
+        //dto.setLista(repC.trovaPerId();)
+        return listaC;
+        //return dto ;
     }
 
     @Override
     public List<Contatti> modificaContatto(Contatti contatto) {
-      repC.save(contatto); 
-      return listaContatti();
+        repC.save(contatto);
+        return listaContatti();
     }
 
     @Override
@@ -47,5 +50,4 @@ RepContatti repC;
         return listaContatti();
     }
 
-    
 }
