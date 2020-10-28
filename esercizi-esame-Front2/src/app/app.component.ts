@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   tabella: boolean=true;
   tabellaMod: boolean=false;
-  dto: ContattiDto;
+
 
 
 constructor (private http: HttpClient, private router: Router){
@@ -49,8 +49,13 @@ constructor (private http: HttpClient, private router: Router){
     let ox: Observable<ContattiDto> =
         this.http.post<ContattiDto>(this.urlHost + "/listaContattiDto",p);
       let ss: Subscription = ox.subscribe(
-        r => this.listaContatti = r.lista);
+        //r => this.listaContatti = r.lista);
+        r => {
+          p = r;
+          this.listaContatti = p.lista;
 
+
+        });
         this.tabella = true;
   }
 
