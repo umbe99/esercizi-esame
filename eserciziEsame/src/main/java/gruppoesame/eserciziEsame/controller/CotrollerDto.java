@@ -35,8 +35,8 @@ public class CotrollerDto {
     //legge i contatti dal db
     @RequestMapping("/listaContattiDto")
     @ResponseBody
-    public DtoContatto listaContattiDto() {
-        DtoContatto dto = crudDto.listaContattiDto();
+    public DtoContatto listaContattiDto(DtoContatto dto) {
+        dto = crudDto.listaContattiDto();
         return dto;
     }
 
