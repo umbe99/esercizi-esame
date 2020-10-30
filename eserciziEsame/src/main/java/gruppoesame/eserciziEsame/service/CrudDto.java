@@ -25,5 +25,7 @@ public interface CrudDto {
 
     //Delete
     public DtoContatto cancellaContattoDto(DtoContatto dto);
+    
+    public DtoContatto cercaContattoDto (DtoContatto dto);
      
 }

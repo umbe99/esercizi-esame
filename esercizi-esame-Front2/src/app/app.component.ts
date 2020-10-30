@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Contatti } from './contatti';
 import { ContattiDto } from './contattiDto';
 import { Observable, Subscription } from 'rxjs';
+import { Contatti } from './contatti';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -11,114 +12,53 @@ import { Observable, Subscription } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent  implements OnInit{
 
-  readonly urlHost="http://localost:8080";
 
-  nome: string="";
-  cognome: string="";
-  telefono: string="";
+readonly urlHost =  "http://localhost:8080"
 
-  nomeMod: string="";
-  cognomeMod: string="";
-  telefonoMod: string="";
+constructor(private http: HttpClient, private router: Router){
+this.lista();
+}
 
-  nomPreMod: string ="";
-  cogPreMod: string ="";
-  telPreMod: string ="";
 
-  listaContatti: Contatti[]= [];
-
-  tabella: boolean=true;
-  tabellaMod: boolean=false;
+//listaContatti: Contatti[]=[];
+contatto: Contatti = new Contatti();
+contatti: Contatti[] = [];
+contattoDto: ContattiDto = new ContattiDto();
+stringa:string;
 
 
 
-constructor (private http: HttpClient, private router: Router){
-    this.cerca();
-  }
   ngOnInit(): void {
 
   }
 
+ lista(){
 
+  let ox: Observable<ContattiDto> =
+        this.http.post<ContattiDto>(this.urlHost + "/listaContattiDto", this.contattoDto);
+      ox.subscribe(risp =>{this.contatti = risp.lista;});
 
-  cerca() {
-    console.log("Siamo in cerca");
-    let p = "ciao"
-    if (p) {
-      console.log("Siamo in cerca con un criterio");
-      let ox: Observable<Contatti[]> =
-        this.http.post<Contatti[]>(this.urlHost + "/cercaContatti", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaContatti = r);
-    } else {
-      console.log("Siamo in cerca per mostrare tutti");
-      let ox: Observable<Contatti[]> =
-        this.http.post<Contatti[]>(this.urlHost + "/listaContatti", p);
-      let ss: Subscription = ox.subscribe(
-        r => this.listaContatti = r);
-    }
-  }
+ }
+aggiungi(){}
 
-/*
-  cerca(){
+cerca(){
+  this.contattoDto.msg = this.stringa
 
-    let dto = new CategoriaDto();
-    dto.categoria.descrizione = this.criterioRicerca;
-    dto.paginaCorrente = this.paginaCorrente;
-    dto.numeroElementiXPagina = 10;
-    if (this.criterioRicerca) {
-      console.log("Siamo in cerca con un criterio");
-      let ox: Observable<ListaCategorieDto> =
-        this.http.post<ListaCategorieDto>(this.urlHost + "/cercaCategoria", dto);
-      let ss: Subscription = ox.subscribe(
-        r => {
-          this.listaCategoria = r.lista;
-          this.numeroTotale = r.numeroTotaleElementi;
-          this.numeroPagine = r.numeroTotalePagine;
-          this.paginaCorrente = r.paginaCorrente;
-        });
-
-    console.log("siamo nel metodo cerca")
-    let p = new ContattiDto();
-        let ox: Observable<ContattiDto> =
-        this.http.post<ContattiDto>(this.urlHost + "/listaContattiDto",p);
-        console.log("inviata richiesta")
-      let ss: Subscription = ox.subscribe(
-        //r => this.listaContatti = r.lista);
-        r => {
-          console.log("ricevo il dto")
-          p = r;
-          this.listaContatti = p.lista;
-
-
-        });
-        console.log("uscita dal metodo")
-        this.tabella = true;
-  }
-*/
-  aggiungi(){
-
-
-  }
-
-  modifica(){
-
-  }
-
-  cancella(){
-
-  }
-
-  modificaContatto(){
-
-
-  }
-
-annulla(){
-
-
+  //let ox: Observable<ContattiDto> =
+  //this.http.post<ContattiDto>(this.urlHost + "/cercaContattiDto", this.contattoDto);
+  //ox.subscribe(risp =>{this.contatti = risp.lista;});
+  this.cancella();
 }
+
+cancella(){
+  let ox: Observable<ContattiDto> =
+  this.http.post<ContattiDto>(this.urlHost + "/cercaContattiDto", this.contattoDto);
+  ox.subscribe(risp =>{this.contatti = risp.lista;});
+}
+
+modifica(){}
+
 
 }

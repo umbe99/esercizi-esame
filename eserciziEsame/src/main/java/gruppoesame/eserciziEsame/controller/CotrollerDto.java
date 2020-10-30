@@ -56,4 +56,11 @@ public class CotrollerDto {
         crudDto.cancellaContattoDto(dto);
         return dto;
     }
+    
+    @RequestMapping("/cercaContattoDto")
+    @ResponseBody
+    public DtoContatto cercaContattoDto(@RequestBody DtoContatto dto) {
+        crudDto.cercaContattoDto(dto);
+        return dto;
+    }
 }

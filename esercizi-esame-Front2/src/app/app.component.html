@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -43,5 +44,47 @@
 
 </div>
 
+<tr>
+  <td>ID</td>
+  <td>NOME</td>
+  <td>COGNOME</td>
+  <td>TELEFONO</td>
+</tr>
+<tr *ngFor = "let l of listaContatti; index as i">
+  <td>{{l.id}}</td>
+  <td>{{l.nome}}</td>
+  <td>{{l.cognome}}</td>
+  <td>{{l.telefono}}</td>
+
+</tr>
 </body>
 </html>
+-->
+<h1>PRODOTTI</h1>
+<br><br><br>
+<input type="text" placeholder="Nome" [(ngModel)]="contatto.nome">
+<input type="text" placeholder="Cognome" [(ngModel)]="contatto.cognome">
+<input type="text" placeholder="Telefono" [(ngModel)]="contatto.telefono">
+<button (click)="aggiungi()">AGGIUNGI</button>
+<br>
+<input type="text" placeholder="inserisci parametro" [(ngModel)]="stringa">
+<button (click)="cerca()">CERCA</button>
+<br><br><br>
+  <table border= 1>
+    <tr>
+      <td>ID</td>
+      <td>NOME</td>
+      <td>COGNOME</td>
+      <td>TELEFONO</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let c of contatti; index as i">
+      <td>{{ c.id }}</td>
+      <td>{{ c.nome }}</td>
+      <td>{{ c.cognome }}</td>
+      <td>{{ c.telefono }}</td>
+      <td><button (click)="modifica(c)">MODIFICA</button></td>
+      <td><button (click)="cancella(c)">CANCELLA</button></td>
+    </tr>
+

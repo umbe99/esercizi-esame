@@ -55,5 +55,12 @@ public class CrudDtoImpl implements CrudDto {
         dto = listaContattiDto();
         return dto;
     }
+
+    @Override
+    public DtoContatto cercaContattoDto(DtoContatto dto) {
+        
+        dto.setLista(repC.cercaNome(dto.getMsg()));
+        return dto;
+    }
     
 }

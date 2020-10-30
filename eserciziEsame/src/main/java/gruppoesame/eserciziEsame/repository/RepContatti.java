@@ -24,8 +24,8 @@ public interface RepContatti extends JpaRepository<Contatti, Long> {
     
     //List<Contatti> findByidLike(id);
 
-    @Query("SELECT c FROM Contatti c WHERE c.telefono = :telefono ORDER BY Id")
-    List<Contatti> trovaPerTelefono(@Param("telefono") String telefono);
+    @Query("SELECT c FROM Contatti c WHERE c.nome Like %:criterio% or c.cognome like %:criterio% or c.telefono like %:criterio%")
+    List<Contatti> cercaNome(@Param("criterio") String criterio);
     
 
 }
